@@ -45,10 +45,12 @@ public class Person {
      * an array  of two elements (the first element is the male mean age and the second one is the
      * female mean age)
      *
+     * (PONGO EL MÉTODO ESTÁTICO PARA QUE NO SEA NECESARIO LA INVOCACIÓN DESDE UNA PERSONA)
+     *
      * @param persons
      * @return
      */
-    public double[] averageAgePerGender(List<Person> persons){
+    public static double[] averageAgePerGender(List<Person> personas){
         return null;
     }
 

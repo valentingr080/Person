@@ -1,6 +1,9 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class PersonTest {
 
     /**
@@ -10,7 +13,7 @@ class PersonTest {
      * relacionados con la creación de objetos de tipo person con atributos incorrectos.
      *
      */
-    private String correctName="Alfonso";
+    private String correctName="María";
     private int correctAge = 20;
     private String correctGender = "female";
 
@@ -43,8 +46,60 @@ class PersonTest {
     }
 
 
+    // Test de averageAgePerGender en caso general de dos personas por género.
     @Test
-    void averageAgePerGender() {
-        
+    void averageAgePerGenderNormalCaseTwoMenTwoWomen() {
+        List<Person> personas = new ArrayList<Person>();
+        Person hombre1 = new Person("Alfonso", 30, "male");
+        personas.add(hombre1);
+        Person hombre2 = new Person("Juan", 40, "male");
+        personas.add(hombre2);
+        Person mujer1 = new Person(correctName, correctAge, correctGender);
+        personas.add(mujer1);
+        Person mujer2 = new Person(correctName, correctAge, correctGender);
+        personas.add(mujer2);
+
+        double[] calculatedValue = Person.averageAgePerGender();
+        double[] expectedValue = {35, 20};
+
+        assertEquals(expectedValue, calculatedValue);
     }
+
+    // Test de averageAgePerGender en caso de que la lista este vacía
+    void averageAgePerGenderEmptyList(){
+        List<Person> personas = new ArrayList<>();
+        double[] calculatedValue = Person.averageAgePerGender(personas);
+        double[] expectedValue = {0,0};
+
+        assertEquals(expectedValue, calculatedValue);
+    }
+
+    // Test de averageAgePerGender en caso de que no haya hombres
+    void averageAgePerGenderNoMales(){
+        List<Person> personas = new ArrayList<Person>();
+        Person mujer1 = new Person(correctName, correctAge, correctGender);
+        personas.add(mujer1);
+        Person mujer2 = new Person(correctName, correctAge, correctGender);
+        personas.add(mujer2);
+
+        double[] calculatedValue = Person.averageAgePerGender();
+        double[] expectedValue = {0, 20};
+
+        assertEquals(expectedValue, calculatedValue);
+    }
+
+    // Test de averageAgePerGender en caso de que no haya mujeres
+    void averageAgePerGenderNoFemales(){
+        List<Person> personas = new ArrayList<Person>();
+        Person hombre1 = new Person("Alfonso", 30, "male");
+        personas.add(hombre1);
+        Person hombre2 = new Person("Juan", 40, "male");
+        personas.add(hombre2);
+
+        double[] calculatedValue = Person.averageAgePerGender();
+        double[] expectedValue = {35, 0};
+
+        assertEquals(expectedValue, calculatedValue);
+    }
+
 }
