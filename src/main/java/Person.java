@@ -21,7 +21,7 @@ public class Person {
     public Person(String name, int age, String gender) {
         if(name.isEmpty()) throw new PersonInstanciationException("El nombre no puede estar vacío");
         if(age < 0) throw new PersonInstanciationException("La edad de una persona no puede ser negativa");
-        if(!gender.equals("male") || !gender.equals("female")) throw new PersonInstanciationException("El genero tiene que ser 'male' o 'female'");
+        if(!gender.equals("male") && !gender.equals("female")) throw new PersonInstanciationException("El genero tiene que ser 'male' o 'female'");
 
         this.name = name;
         this.age = age;
@@ -51,7 +51,18 @@ public class Person {
      * @return
      */
     public static double[] averageAgePerGender(List<Person> personas){
-        return null;
+        int numMale = 0, numFemale = 0;
+        double maleAverage = 0, femaleAverage = 0;
+        for(Person p : personas){
+            if(p.gender().equals("male")){
+                numMale++;
+                maleAverage+=p.age();
+            }else{ // we don't need to check if it is female, because it can only be male or female according to our constructor.
+                numFemale++;
+                femaleAverage+=p.age();
+            }
+        }
+        return new double[]{maleAverage / numMale, femaleAverage / numFemale};
     }
 
 

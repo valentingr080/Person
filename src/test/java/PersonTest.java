@@ -59,10 +59,10 @@ class PersonTest {
         Person mujer2 = new Person(correctName, correctAge, correctGender);
         personas.add(mujer2);
 
-        double[] calculatedValue = Person.averageAgePerGender();
+        double[] calculatedValue = Person.averageAgePerGender(personas);
         double[] expectedValue = {35, 20};
 
-        assertEquals(expectedValue, calculatedValue);
+        assertArrayEquals(expectedValue, calculatedValue);
     }
 
     // Test de averageAgePerGender en caso de que la lista este vacía
@@ -71,7 +71,7 @@ class PersonTest {
         double[] calculatedValue = Person.averageAgePerGender(personas);
         double[] expectedValue = {0,0};
 
-        assertEquals(expectedValue, calculatedValue);
+        assertArrayEquals(expectedValue, calculatedValue);
     }
 
     // Test de averageAgePerGender en caso de que no haya hombres
@@ -82,10 +82,10 @@ class PersonTest {
         Person mujer2 = new Person(correctName, correctAge, correctGender);
         personas.add(mujer2);
 
-        double[] calculatedValue = Person.averageAgePerGender();
+        double[] calculatedValue = Person.averageAgePerGender(personas);
         double[] expectedValue = {0, 20};
 
-        assertEquals(expectedValue, calculatedValue);
+        assertArrayEquals(expectedValue, calculatedValue);
     }
 
     // Test de averageAgePerGender en caso de que no haya mujeres
@@ -96,10 +96,10 @@ class PersonTest {
         Person hombre2 = new Person("Juan", 40, "male");
         personas.add(hombre2);
 
-        double[] calculatedValue = Person.averageAgePerGender();
+        double[] calculatedValue = Person.averageAgePerGender(personas);
         double[] expectedValue = {35, 0};
 
-        assertEquals(expectedValue, calculatedValue);
+        assertArrayEquals(expectedValue, calculatedValue);
     }
 
 }
