@@ -19,9 +19,9 @@ public class Person {
      * @param gender the gender of the person
      */
     public Person(String name, int age, String gender) {
-        if(name.isEmpty()) throw new EmptyStringException("El nombre no puede estar vacío");
-        if(age < 0) throw new NegativeAgeException("La edad de una persona no puede ser negativa");
-        if(!gender.equals("male") || !gender.equals("female")) throw new BadGenderInputException("El genero tiene que ser 'male' o 'female'");
+        if(name.isEmpty()) throw new PersonInstanciationException("El nombre no puede estar vacío");
+        if(age < 0) throw new PersonInstanciationException("La edad de una persona no puede ser negativa");
+        if(!gender.equals("male") || !gender.equals("female")) throw new PersonInstanciationException("El genero tiene que ser 'male' o 'female'");
 
         this.name = name;
         this.age = age;

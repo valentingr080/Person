@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 class PersonTest {
 
     @Test
-    void name() {
+    void TestNameIsEmpty() {
+
     }
 
     @Test
